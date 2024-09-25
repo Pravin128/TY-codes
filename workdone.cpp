@@ -15,18 +15,13 @@ Output: 22
 #include <iostream>
 
 using namespace std;
-
-// Function to calculate the total work done given the tasks
-// the minimum work per day (low), and the number of tasks (N)
-
-
-int calculateWork(int task[], int low, int N)
+int calculateWork(int task[], int low, int N)  //calculate workdone
 {
     int temp = 0;
     for (int i = 0; i < N; i++)
     {
-        // Calculate the number of days required for each task
-        temp += (task[i] + low - 1) / low;
+        
+        temp += (task[i] + low - 1) / low;   // Calculate the number of days
     }
     return temp;
 }
@@ -34,35 +29,26 @@ int calculateWork(int task[], int low, int N)
 int main()
 {
     int N, task[10], days, low = 1;
-
-    // Input the number of tasks
-    cout << "Enter size: ";
+    cout << "Enter nunber o tasks: ";
     cin >> N;
 
-    // Input the amount of work for each task.
-    for (int i = 0; i < N; i++)
-    {
+   
+    for (int i = 0; i < N; i++) //amount of work for each task
+     {
         cout << "Enter " << i << "th work: ";
         cin >> task[i];
     }
-
-    // Input the maximum number of days available.
     cout << "Enter max number of days: ";
     cin >> days;
 
     while (true)
-    {
-        // Calculate the total work with the current minimum work per day.
+        {
         int work = calculateWork(task, low, N);
-
-        // If the total work is less than or equal to the available days print the days and break the loop.
         if (work <= days)
         {
             cout << "Minimum work to be done per day: " << low << endl;
             break;
         }
-
-        // Increment the minimum work per day
         low++;
     }
 
